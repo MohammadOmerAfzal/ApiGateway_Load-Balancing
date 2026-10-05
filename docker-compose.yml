@@ -1,0 +1,37 @@
+services:
+
+  users-service:
+    build:
+      context: ./apps/users-service
+    image: users-service:1.2
+    container_name: users-service-compose
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+    restart: unless-stopped
+
+  products-service:
+    build:
+      context: ./apps/products-service
+    image: products-service:1.0
+    container_name: products-service-compose
+    ports:
+      - "3001:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+    restart: unless-stopped
+
+  orders-service:
+    build:
+      context: ./apps/orders-service
+    image: orders-service:1.1
+    container_name: orders-service-compose
+    ports:
+      - "3002:3000"
+    environment:
+      PORT: 3000
+      NODE_ENV: production
+    restart: unless-stopped
