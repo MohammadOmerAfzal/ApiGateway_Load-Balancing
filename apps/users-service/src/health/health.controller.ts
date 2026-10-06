@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import os from 'os';
 
 @Controller()
 export class HealthController {
@@ -7,6 +8,7 @@ export class HealthController {
     return {
       status: 'ok',
       service: 'users-service',
+      hostname: os.hostname(),
       uptime: process.uptime(),
       timestamp: new Date().toISOString(),
     };
@@ -17,6 +19,7 @@ export class HealthController {
     return {
       status: 'ready',
       service: 'users-service',
+      hostname: os.hostname(),
     };
   }
 }
